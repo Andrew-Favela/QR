@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Redirigiendo...</title>
+  <script>
+    // === AQUÍ ES DONDE PONDRÁS LOS LINKS DE TUS CLIENTES ===
+    const enlaces = {
+      "1": "https://ejemplo.com", 
+      "2": "",
+      // Puedes ir agregando más números hacia abajo conforme vendas
+    };
+
+    // === NO TOQUES NADA DE AQUÍ PARA ABAJO ===
+    const parametros = new URLSearchParams(window.location.search);
+    const id = parametros.get('id');
+
+    if (id && enlaces[id] && enlaces[id] !== "") {
+      window.location.replace(enlaces[id]);
+    } else {
+      document.write("<h2 style='font-family:sans-serif; text-align:center; margin-top:20%;'>QR en blanco. Listo para un cliente nuevo.</h2>");
+    }
+  </script>
+</head>
+<body></body>
+</html>
