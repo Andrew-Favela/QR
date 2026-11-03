@@ -2,11 +2,12 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-width=1.0">
   <title>Redirigiendo...</title>
   <script>
     // === AQUÍ ES DONDE PONDRÁS LOS LINKS DE TUS CLIENTES ===
     const enlaces = {
-      "1": "https://www.instagram.com/andbryfe/", 
+      "1": "https://ejemplo.com", 
       "2": "",
       // Puedes ir agregando más números hacia abajo conforme vendas
     };
@@ -15,12 +16,21 @@
     const parametros = new URLSearchParams(window.location.search);
     const id = parametros.get('id');
 
-    if (id && enlaces[id] && enlaces[id] !== "") {
-      window.location.replace(enlaces[id]);
-    } else {
-      document.write("<h2 style='font-family:sans-serif; text-align:center; margin-top:20%;'>QR en blanco. Listo para un cliente nuevo.</h2>");
-    }
+    window.onload = function() {
+      // Si el id existe y tiene un enlace asignado
+      if (id && enlaces[id] && enlaces[id] !== "") {
+        window.location.replace(enlaces[id]);
+      } 
+      // Si el id existe pero no tiene enlace asignado
+      else if (id) {
+        document.body.innerHTML = "<h1 style='font-family:sans-serif; text-align:center; margin-top:30vh; font-size:40px; color:#333;'>QR #" + id + "</h1>";
+      } 
+      // Si escanean el link sin ningún número
+      else {
+        document.body.innerHTML = "<h2 style='font-family:sans-serif; text-align:center; margin-top:30vh; color:#333;'>Código no válido</h2>";
+      }
+    };
   </script>
 </head>
-<body></body>
+<body style="margin:0; background-color:#f5f5f5;"></body>
 </html>
